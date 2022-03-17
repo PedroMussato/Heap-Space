@@ -1,19 +1,36 @@
 from tkinter import Button, Entry, Frame, Label, Tk
 from datetime import datetime
 
+# The default version is setted to the Ahsay 8 and 2GBs of memory.
 VERSION = 8
-LOGFILE = "./transactions/log.txt"
 VALUE = "2048"
+LOGFILE = "./transactions/log.txt"
 
 
 def log(value):
+    """
+    :param value: This function receive the log information as string.
+    :return: does not return anything.
+    """
     global LOGFILE
     with open(LOGFILE, "a+") as logfile:
         logfile.write(f"{datetime.now()}\n{value}\n")
 
 
 def pro(version, value):
-    log(f"Version {version}, was selected!")
+    """
+    This function receives two parameters
+    :param version: is the version of the sofyware
+    :param value: is the amount of memmory to set
+    :return: all data modified with those values specified
+    runPath <= the path of the file in bin to override
+    runTxt <= the actual text to write in the file
+    configPath <= the path of the config file to override
+    configTxt <= the actual text to write in the file
+    run32Path <= in case of version 6 has the support of 32bit processor, this the path of the run32 file to override
+    run32Txt <= the actual text to write in the file
+    """
+    log(f"Creating the files of the version {version} with the value of {value}MBs")
     if version == 8:
         runPath ="../bin/RunCB.bat"
         runTxt = f"""@ECHO OFF
@@ -246,8 +263,13 @@ app.system.common.format.datetime.hourinday=true
 
 
 def changeValues(version):
+    """
+    this function receives the parameters of the function pro() and override the files with those values.
+    :param version: the version of the software
+    :return: this function returns True if the version is right, and false if it wrong.
+    """
     global VALUE
-    log(f"Version {version} was selected.")
+    log(f"Changing the values of the version {version}.")
     if version > 5 and version < 9:
         value = VALUE
         log("This version is valid")
@@ -255,6 +277,7 @@ def changeValues(version):
         with open(runPath, "r") as runOldFile:
             log(f"Reading {runPath} file.")
             readed = runOldFile.read()
+            log("Logging the previous value.")
             log(f"{readed}")
 
         with open(runPath, "w") as runFile:
@@ -264,6 +287,7 @@ def changeValues(version):
         with open(configPath, "r") as configOldFile:
             log(f"Reading {configPath} file.")
             readed = configOldFile.read()
+            log("Logging the previous value.")
             log(f"{readed}")
 
         with open(configPath, "w") as configFile:
@@ -274,6 +298,7 @@ def changeValues(version):
             with open(run32Path, "r") as runOldFile:
                 log(f"Reading {run32Path} file.")
                 readed = runOldFile.read()
+                log("Logging the previous value.")
                 log(f"{readed}")
 
             with open(run32Path, "w") as runFile:
