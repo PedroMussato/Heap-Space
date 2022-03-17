@@ -342,6 +342,8 @@ def version(value):
 
 
 root = Tk()
+root.title("HS")
+root.resizable(width=0, height=0)
 log("Starting")
 
 Label(root, text="Product version:").grid(row=0, column=0)
