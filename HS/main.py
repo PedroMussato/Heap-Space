@@ -3,7 +3,7 @@ from datetime import datetime
 
 VERSION = 8
 LOGFILE = "./transactions/log.txt"
-VALUE = 2048
+VALUE = "2048"
 
 
 def log(value):
