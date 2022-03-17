@@ -30,10 +30,10 @@ SET PATH=%JAVA_HOME%\bin;%PATH%
 
 IF "%PROCESSOR_ARCHITECTURE%"=="x86" (
   SET "DEP_LIB_PATH=X86"
-  SET JAVA_OPTS=-Xms128m -Xmx4096m -XX:MaxDirectMemorySize=512m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
+  SET JAVA_OPTS=-Xms128m -Xmx2048m -XX:MaxDirectMemorySize=512m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
 ) ELSE (
   SET "DEP_LIB_PATH=X64"
-  SET JAVA_OPTS=-Xms128m -Xmx4096m -XX:MaxDirectMemorySize=1024m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
+  SET JAVA_OPTS=-Xms128m -Xmx2048m -XX:MaxDirectMemorySize=1024m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
 )
 
 SET PATH=%APP_HOME%\bin\%DEP_LIB_PATH%;%JAVA_HOME%\bin;%PATH%
