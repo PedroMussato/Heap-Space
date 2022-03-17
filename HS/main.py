@@ -20,32 +20,26 @@ def pro(version, value):
 REM #############################  RunCB.bat  ##################################
 REM # You can use this batch to run the backup client application              #
 REM ############################################################################
-
 REM ####################  Start: User Defined Section  #########################
-
 REM ------------------------------  SETTING_HOME  ------------------------------
 REM | Directory to your setting home. Default to                               |
 REM | "C:\\Users\\USER\\.obm" when not set.                                       |
 REM | e.g. SET SETTING_HOME="C:\\Users\\John\\.obm"                               |
 REM ----------------------------------------------------------------------------
 SET SETTING_HOME=""
-
 REM -------------------------------  DEBUG_MODE  -------------------------------
 REM | Enable/Disable debug mode                                                |
 REM | e.g. SET DEBUG_MODE="--debug"                                            |
 REM |  or  SET DEBUG_MODE=""                                                   |
 REM ----------------------------------------------------------------------------
 SET DEBUG_MODE=""
-
 REM ####################  END: User Defined Section  ###########################
-
 SET EXE_DIR=%CD%
 SET APP_HOME=..
 SET JAVA_HOME=%APP_HOME%\\jvm
 SET JAVA_EXE=%JAVA_HOME%\\bin\\bJW.exe
 SET JAVA_LIB_PATH=-Djava.library.path=%APP_HOME%\\bin
 SET PATH=%JAVA_HOME%\\bin;%PATH%
-
 IF "%PROCESSOR_ARCHITECTURE%"=="x86" (
   SET "DEP_LIB_PATH=X86"
   SET JAVA_OPTS=-Xms128m -Xmx{value}m -XX:MaxDirectMemorySize=512m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
@@ -53,11 +47,9 @@ IF "%PROCESSOR_ARCHITECTURE%"=="x86" (
   SET "DEP_LIB_PATH=X64"
   SET JAVA_OPTS=-Xms128m -Xmx{value}m -XX:MaxDirectMemorySize=1024m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
 )
-
 SET PATH=%APP_HOME%\\bin\\%DEP_LIB_PATH%;%JAVA_HOME%\\bin;%PATH%
 SET CLASSPATH=%APP_HOME%\bin;%APP_HOME%\\bin\\cb.jar
 SET JAVA_LIB_PATH=%JAVA_LIB_PATH%;%APP_HOME%\\bin\\%DEP_LIB_PATH%
-
 REM #############################################################################
 ECHO - 
 ECHO APP_HOME=%APP_HOME%
@@ -69,7 +61,6 @@ ECHO JAVA_LIB_PATH=%JAVA_LIB_PATH%
 ECHO PATH=%PATH%
 ECHO CLASSPATH=%CLASSPATH%
 ECHO - 
-
 @ECHO ON
 %JAVA_EXE% %JAVA_LIB_PATH% -cp %CLASSPATH% %JAVA_OPTS% Gui %DEBUG_MODE% %APP_HOME% %SETTING_HOME%
 @ECHO OFF
@@ -92,76 +83,67 @@ app.system.ui.backupsetlist.order=creationtime
     elif version == 7:
         runPath = "../bin/RunCB.bat"
         runTxt = f"""@ECHO OFF
-        REM #############################  RunCB.bat  ##################################
-        REM # You can use this batch to run the backup client application              #
-        REM ############################################################################
-
-        REM ####################  Start: User Defined Section  #########################
-
-        REM ------------------------------  SETTING_HOME  ------------------------------
-        REM | Directory to your setting home. Default to                               |
-        REM | "C:\\Users\\USER\\.obm" when not set.                                       |
-        REM | e.g. SET SETTING_HOME="C:\\Users\\John\\.obm"                               |
-        REM ----------------------------------------------------------------------------
-        SET SETTING_HOME=""
-
-        REM -------------------------------  DEBUG_MODE  -------------------------------
-        REM | Enable/Disable debug mode                                                |
-        REM | e.g. SET DEBUG_MODE="--debug"                                            |
-        REM |  or  SET DEBUG_MODE=""                                                   |
-        REM ----------------------------------------------------------------------------
-        SET DEBUG_MODE=""
-
-        REM ####################  END: User Defined Section  ###########################
-
-        SET EXE_DIR=%CD%
-        SET APP_HOME=..
-        SET JAVA_HOME=%APP_HOME%\\jvm
-        SET JAVA_EXE=%JAVA_HOME%\\bin\\bJW.exe
-        SET JAVA_LIB_PATH=-Djava.library.path=%APP_HOME%\\bin
-        SET PATH=%JAVA_HOME%\\bin;%PATH%
-
-        IF "%PROCESSOR_ARCHITECTURE%"=="x86" (
-          SET "DEP_LIB_PATH=X86"
-          SET JAVA_OPTS=-Xms128m -Xmx{value}m -XX:MaxDirectMemorySize=512m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
-        ) ELSE (
-          SET "DEP_LIB_PATH=X64"
-          SET JAVA_OPTS=-Xms128m -Xmx{value}m -XX:MaxDirectMemorySize=1024m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
-        )
-
-        SET PATH=%APP_HOME%\\bin\\%DEP_LIB_PATH%;%JAVA_HOME%\\bin;%PATH%
-        SET CLASSPATH=%APP_HOME%\bin;%APP_HOME%\\bin\\cb.jar
-        SET JAVA_LIB_PATH=%JAVA_LIB_PATH%;%APP_HOME%\\bin\\%DEP_LIB_PATH%
-
-        REM #############################################################################
-        ECHO - 
-        ECHO APP_HOME=%APP_HOME%
-        ECHO SETTING_HOME=%SETTING_HOME%
-        ECHO JAVA_HOME=%JAVA_HOME%
-        ECHO JAVA_EXE=%JAVA_EXE%
-        ECHO JAVA_OPTS=%JAVA_OPTS%
-        ECHO JAVA_LIB_PATH=%JAVA_LIB_PATH%
-        ECHO PATH=%PATH%
-        ECHO CLASSPATH=%CLASSPATH%
-        ECHO - 
-
-        @ECHO ON
-        %JAVA_EXE% %JAVA_LIB_PATH% -cp %CLASSPATH% %JAVA_OPTS% Gui %DEBUG_MODE% %APP_HOME% %SETTING_HOME%
-        @ECHO OFF
-        CD "%EXE_DIR%"
-        IF "%APP_HOME%"==".." PAUSE
-        @ECHO ON"""
+REM #############################  RunCB.bat  ##################################
+REM # You can use this batch to run the backup client application              #
+REM ############################################################################
+REM ####################  Start: User Defined Section  #########################
+REM ------------------------------  SETTING_HOME  ------------------------------
+REM | Directory to your setting home. Default to                               |
+REM | "C:\\Users\\USER\\.obm" when not set.                                       |
+REM | e.g. SET SETTING_HOME="C:\\Users\\John\\.obm"                               |
+REM ----------------------------------------------------------------------------
+SET SETTING_HOME=""
+REM -------------------------------  DEBUG_MODE  -------------------------------
+REM | Enable/Disable debug mode                                                |
+REM | e.g. SET DEBUG_MODE="--debug"                                            |
+REM |  or  SET DEBUG_MODE=""                                                   |
+REM ----------------------------------------------------------------------------
+SET DEBUG_MODE=""
+REM ####################  END: User Defined Section  ###########################
+SET EXE_DIR=%CD%
+SET APP_HOME=..
+SET JAVA_HOME=%APP_HOME%\\jvm
+SET JAVA_EXE=%JAVA_HOME%\\bin\\bJW.exe
+SET JAVA_LIB_PATH=-Djava.library.path=%APP_HOME%\\bin
+SET PATH=%JAVA_HOME%\\bin;%PATH%
+IF "%PROCESSOR_ARCHITECTURE%"=="x86" (
+    SET "DEP_LIB_PATH=X86"
+    SET JAVA_OPTS=-Xms128m -Xmx{value}m -XX:MaxDirectMemorySize=512m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
+) ELSE (
+    SET "DEP_LIB_PATH=X64"
+    SET JAVA_OPTS=-Xms128m -Xmx{value}m -XX:MaxDirectMemorySize=1024m -Dsun.java2d.noddraw -Dsun.nio.PageAlignDirectMemory=true
+)
+SET PATH=%APP_HOME%\\bin\\%DEP_LIB_PATH%;%JAVA_HOME%\\bin;%PATH%
+SET CLASSPATH=%APP_HOME%\bin;%APP_HOME%\\bin\\cb.jar
+SET JAVA_LIB_PATH=%JAVA_LIB_PATH%;%APP_HOME%\\bin\\%DEP_LIB_PATH%
+REM #############################################################################
+ECHO - 
+ECHO APP_HOME=%APP_HOME%
+ECHO SETTING_HOME=%SETTING_HOME%
+ECHO JAVA_HOME=%JAVA_HOME%
+ECHO JAVA_EXE=%JAVA_EXE%
+ECHO JAVA_OPTS=%JAVA_OPTS%
+ECHO JAVA_LIB_PATH=%JAVA_LIB_PATH%
+ECHO PATH=%PATH%
+ECHO CLASSPATH=%CLASSPATH%
+ECHO - 
+@ECHO ON
+%JAVA_EXE% %JAVA_LIB_PATH% -cp %CLASSPATH% %JAVA_OPTS% Gui %DEBUG_MODE% %APP_HOME% %SETTING_HOME%
+@ECHO OFF
+CD "%EXE_DIR%"
+IF "%APP_HOME%"==".." PAUSE
+@ECHO ON"""
         run32Path = "no32bit"
         run32Txt = "no32bit"
         configPath = "../config.ini"
         configTxt = f"""app.system.ui.vm.opt.xms=128
-        app.system.ui.vm.opt.xmx={value}
-        app.system.conf.vm.opt.maxdirectmemorysize=1024
-        app.system.conf.language=en
-        app.system.product.name=obm
-        app.system.common.format.datetime.hourinday=true
-        app.system.ui.backupsetlist.order=creationtime
-        """
+app.system.ui.vm.opt.xmx={value}
+app.system.conf.vm.opt.maxdirectmemorysize=1024
+app.system.conf.language=en
+app.system.product.name=obm
+app.system.common.format.datetime.hourinday=true
+app.system.ui.backupsetlist.order=creationtime
+"""
         log(f"Creating the files with the value of {value}MB")
         return runPath, runTxt, configPath, configTxt, run32Path, run32Txt
     elif version == 6:
@@ -171,25 +153,20 @@ app.system.ui.backupsetlist.order=creationtime
 REM #############################  RunOBC.bat  #################################
 REM # You can use this batch to run the backup client application              #
 REM ############################################################################
-
 REM ####################  Start: User Defined Section  #########################
-
 REM ------------------------------  SETTING_HOME  ------------------------------
 REM | Directory to your setting home. Default to                               |
 REM | "C:\\Documents and Settings\\USER\\.obm" when not set.                      |
 REM | e.g. SET SETTING_HOME="C:\\Documents and Settings\\John\\.obm"              |
 REM ----------------------------------------------------------------------------
 SET SETTING_HOME=""
-
 REM -------------------------------  DEBUG_MODE  -------------------------------
 REM | Enable/Disable debug mode                                                |
 REM | e.g. SET DEBUG_MODE="--debug"                                            |
 REM |  or  SET DEBUG_MODE=""                                                   |
 REM ----------------------------------------------------------------------------
 SET DEBUG_MODE=""
-
 REM ####################  END: User Defined Section  ###########################
-
 SET APP_HOME=..
 SET JAVA_HOME=%APP_HOME%\\jvm
 SET JAVA_EXE=%JAVA_HOME%\\bin\\java.exe
@@ -197,13 +174,11 @@ SET JAVA_OPTS=-Xms128m -Xmx{value}m -Dsun.java2d.noddraw
 SET JAVA_LIB_PATH=-Djava.library.path=%APP_HOME%\\bin
 SET PATH=%JAVA_HOME%\\bin;%PATH%
 SET CLASSPATH=%APP_HOME%\\bin;%APP_HOME%\\bin\\obc.jar;%APP_HOME%\\bin\\obc-lib.jar
-
 SET "DEP_LIB_PATH=X64"
 IF "%PROCESSOR_ARCHITECTURE%"=="x86" (
   SET "DEP_LIB_PATH=X86"
 )
 SET PATH=%CD%\\%APP_HOME%\\bin\\%DEP_LIB_PATH%;%PATH%
-
 REM #############################################################################
 ECHO - 
 ECHO APP_HOME=%APP_HOME%
@@ -215,7 +190,6 @@ ECHO JAVA_LIB_PATH=%JAVA_LIB_PATH%
 ECHO PATH=%PATH%
 ECHO CLASSPATH=%CLASSPATH%
 ECHO - 
-
 @ECHO ON
 %JAVA_EXE% %JAVA_LIB_PATH% -cp %CLASSPATH% %JAVA_OPTS% obc %DEBUG_MODE% %APP_HOME% %SETTING_HOME%
 PAUSE"""
@@ -223,25 +197,20 @@ PAUSE"""
 REM #############################  RunOBC.bat  #################################
 REM # You can use this batch to run the backup client application              #
 REM ############################################################################
-
 REM ####################  Start: User Defined Section  #########################
-
 REM ------------------------------  SETTING_HOME  ------------------------------
 REM | Directory to your setting home. Default to                               |
 REM | "C:\\Documents and Settings\\USER\\.obm" when not set.                      |
 REM | e.g. SET SETTING_HOME="C:\\Documents and Settings\\John\\.obm"              |
 REM ----------------------------------------------------------------------------
 SET SETTING_HOME=""
-
 REM -------------------------------  DEBUG_MODE  -------------------------------
 REM | Enable/Disable debug mode                                                |
 REM | e.g. SET DEBUG_MODE="--debug"                                            |
 REM |  or  SET DEBUG_MODE=""                                                   |
 REM ----------------------------------------------------------------------------
 SET DEBUG_MODE=""
-
 REM ####################  END: User Defined Section  ###########################
-
 SET APP_HOME=..
 SET JAVA_HOME=%APP_HOME%\\jvm32
 SET JAVA_EXE=%JAVA_HOME%\\bin\\java.exe
@@ -249,10 +218,8 @@ SET JAVA_OPTS=-Xms128m -Xmx{value}m -Dsun.java2d.noddraw
 SET JAVA_LIB_PATH=-Djava.library.path=%APP_HOME%\\bin
 SET PATH=%JAVA_HOME%\\bin;%PATH%
 SET CLASSPATH=%APP_HOME%\\bin;%APP_HOME%\\bin\\obc.jar;%APP_HOME%\\bin\\obc-lib.jar
-
 SET "DEP_LIB_PATH=X86"
 SET PATH=%CD%\\%APP_HOME%\\bin\\%DEP_LIB_PATH%;%PATH%
-
 REM #############################################################################
 ECHO - 
 ECHO APP_HOME=%APP_HOME%
@@ -264,7 +231,6 @@ ECHO JAVA_LIB_PATH=%JAVA_LIB_PATH%
 ECHO PATH=%PATH%
 ECHO CLASSPATH=%CLASSPATH%
 ECHO - 
-
 @ECHO ON
 %JAVA_EXE% %JAVA_LIB_PATH% -cp %CLASSPATH% %JAVA_OPTS% obc %DEBUG_MODE% %APP_HOME% %SETTING_HOME%
 PAUSE"""
@@ -342,8 +308,6 @@ def version(value):
 
 
 root = Tk()
-root.title("HS")
-root.resizable(width=0, height=0)
 log("Starting")
 
 Label(root, text="Product version:").grid(row=0, column=0)
