@@ -268,7 +268,7 @@ ECHO -
 @ECHO ON
 %JAVA_EXE% %JAVA_LIB_PATH% -cp %CLASSPATH% %JAVA_OPTS% obc %DEBUG_MODE% %APP_HOME% %SETTING_HOME%
 PAUSE"""
-        configPath = "./config.ini"
+        configPath = "../config.ini"
         configTxt = f"""app.system.ui.vm.opt.xms=128
 app.system.ui.vm.opt.xmx={value}
 app.system.conf.language=en
